@@ -45,5 +45,5 @@ Licentie
 ========
 Deze applicatie bevind zich onder een `CCO 1.0 License`_.
 
-.. _CCO 1.0 License: https://github.com/GO-PC-Build/DiscordBot/LICENSE
+.. _CCO 1.0 License: https://github.com/GO-PC-Build/DiscordBot/blob/master/LICENSE
 
