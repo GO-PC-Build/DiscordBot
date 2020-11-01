@@ -13,7 +13,7 @@ try:
     from utilsx.discord import BotX
 except ImportError:
     print("UtilsX library is missing, attempting to install it...")
-    system(("py -3" if name == "nt" else "python3") + " -m pip install utilsx")
+    system(("py -3" if name == "nt" else "python3") + " -m pip install -r requirements.txt")
     print("Please reboot this application")
     exit(0)
     raise  # Fixes IDE error
