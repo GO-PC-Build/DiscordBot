@@ -5,7 +5,6 @@
 from glob import glob
 from os import name, execv, system, environ
 from sys import argv, executable, stdout, exit
-from threading import Thread
 from distutils.util import strtobool
 
 try:
@@ -18,8 +17,10 @@ except ImportError:
     exit(0)
     raise  # Fixes IDE error
 
+
 from utils import VersionHandler, PrintHandler
 from configparser import ConfigParser
+from discord import Intents
 
 
 # Check if the operating system is linux or windows. (nt = windows)
@@ -38,7 +39,7 @@ class Bot(BotX):
     The main bot object, this contains our handlers and loads our extensions
     """
     def __init__(self):
-        super().__init__()
+        super().__init__(Intents.all())
         system(clear)
         stdout.flush()
         self.prettier = Prettier(colors_enabled=strtobool(cfg["CONSOLE"].get("colors", "true")), auto_strip_message=True)
@@ -72,30 +73,30 @@ class Bot(BotX):
             self.ph.printf("Successfully updated to the latest version. Rebooting bot.")
             self.restart()
 
-    def console_handler(self):
-        data = input("").strip()
-        if data == "help":
-            self.prettier.print(f"Interactive Console Help Menu v{self.vm.version}\n"
-                                "update - Checks if it can update, if it can it will.\n"
-                                "stop - Kills the bot instance\n"
-                                "help - This menu")
-        elif data == "update":
-            self.check_for_updates()
-            self.ph.printf("No updates found!")
-        elif data == "stop":
-            self.ph.printf("Stopping bot!")
-            exit(0)
-        else:
-            self.ph.printf(f"Couldn't find a command called '{data}'")
-        self.console_handler()
+    # def console_handler(self):
+    #     data = input("").strip()
+    #     if data == "help":
+    #         self.prettier.print(f"Interactive Console Help Menu v{self.vm.version}\n"
+    #                             "update - Checks if it can update, if it can it will.\n"
+    #                             "stop - Kills the bot instance\n"
+    #                             "help - This menu")
+    #     elif data == "update":
+    #         self.check_for_updates()
+    #         self.ph.printf("No updates found!")
+    #     elif data == "stop":
+    #         self.ph.printf("Stopping bot!")
+    #         exit(0)
+    #     else:
+    #         self.ph.printf(f"Couldn't find a command called '{data}'")
+    #     self.console_handler()
 
     async def on_ready(self):
         self.ph.printf(f"Currently running on v{self.vm.version}!")
 
-        self.ph.printf("Console input ready, type `help` to see all commands.")
+        # self.ph.printf("Console input ready, type `help` to see all commands.")
 
-        Thread(target=self.console_handler).start()
-        await self.logout()
+        # Thread(target=self.console_handler).start()
+        # await self.logout()
 
 
 if __name__ == "__main__":
