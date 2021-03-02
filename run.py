@@ -46,6 +46,7 @@ class Bot(BotX):
         self.ph = PrintHandler(self.prettier)
         self.ph.printf("Initializing client...")
         self.prefix = cfg["BOT"].get("prefix", "!")
+        self.description = "De officiele GO-AO discord bot!"
 
         self.vm = VersionHandler()
         if strtobool(cfg["UPDATER"].get("enabled", "true")):
