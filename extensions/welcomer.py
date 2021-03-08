@@ -20,8 +20,8 @@ class AutoWelcome(Cog):
                                      "Wij geven twee workshops, in deze workshops gaan wij jullie leren hoe je je eigen "
                                      "computer kan bouwen en een OS (Operating System, bijvoorbeeld Windows) installeren!",
                              fields=[Field("🔗 Handige links",
-                                           "[Website](https://gpb.go-ao.be) [Quiz](https://gpb.go-ao.be/quiz) "
-                                           "[Reserveer/Reservatie](https://gpb.go-ao.be/reserveer)"),
+                                           "[Website](http://gpb.go-ao.be) [Quiz](http://gpb.go-ao.be/quiz) "
+                                           "[Reserveer/Reservatie](http://gpb.go-ao.be/reserveer)"),
                                      Field("Volg ons",
                                            "[Twitter](https://twitter.com/GOPCBuild) "
                                            "[Facebook](https://www.facebook.com/GOPCBuild) "
